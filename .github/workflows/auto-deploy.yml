@@ -126,14 +126,13 @@ jobs:
         java -jar BuildTools.jar --rev 1.21.11 --remapped --disable-java-check
         
         cd ../
-    - name: Build only 1.21.10~1.21.11 modules
+    - name: Build Project
       run: |
-        mvn -B -DskipTests package -pl nms/1_21_9-10,nms/1_21_11 -am
+        mvn clean package
 
     - name: Upload IF jars (1.21.10~1.21.11)
       uses: actions/upload-artifact@v4
       with:
-        name: IF-1.21.10-1.21.11-jars
+        name: IF-jars
         path: |
-          nms/1_21_9-10/target/*.jar
-          nms/1_21_11/target/*.jar
+          IF/target/*.jar
