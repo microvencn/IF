@@ -126,8 +126,6 @@ jobs:
         java -jar BuildTools.jar --rev 1.21.11 --remapped --disable-java-check
         
         cd ../
-    - name: Setup GPG keys
-      run: cat <(echo -e "${{ secrets.GPG_KEY }}") | gpg --batch --import
     - name: Build only 1.21.10~1.21.11 modules
       run: |
         mvn -B -DskipTests package -pl nms/1_21_9-10,nms/1_21_11 -am
